@@ -235,6 +235,7 @@
   <button class="maintab-btn" data-maintab="theta" onclick="showMainTab('theta')">Extension · θ, Not Frequency</button>
   <button class="maintab-btn" data-maintab="ytcache" onclick="showMainTab('ytcache')">In My YouTube Cache</button>
   <button class="maintab-btn" data-maintab="muzaale" onclick="showMainTab('muzaale')">Muzaale · Bitarakwate</button>
+  <button class="maintab-btn" data-maintab="who" onclick="showMainTab('who')">WHO India · First Principles</button>
 </div>
 
 <!-- ============ TAB 1: EVENT STREAM ============ -->
@@ -583,9 +584,48 @@
   </div>
 </section>
 
+<!-- ============ TAB 7: WHO INDIA · FIRST PRINCIPLES ============ -->
+<section id="main-who" class="maintab-panel">
+  <div class="section-head">
+    <div class="eyebrow">Cached, Again — and This One Resolves Cleanly</div>
+    <h2>"What is AI, really?" already has an answer. It's the WHO India curriculum.</h2>
+    <p>Episode 1 of First Principles' AI series ("The Idea That Waited") opens with the honest confusion at the center of the field: a chess engine, a chatbot, a self-driving car, and a spam filter all get called "AI," and share almost nothing. The presenter's proposed fix is a map of five <strong>Abilities</strong> — Seeing, Hearing, Reading &amp; Writing, Moving, Deciding — drawn as five parallel boxes down one axis. That's a genuine first-principles move. It's also missing exactly the piece USRPO was built to supply.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge summary">Cached — "What is AI, really?" First Principles, Ep. 1</span><span class="src mono">youtube.com/watch?v=kpbv8MXEdog</span></div>
+    <div class="video-frame">
+      <div class="aspect">
+        <iframe src="https://www.youtube.com/embed/kpbv8MXEdog" title="What is AI, really? — First Principles of AI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+    <p>The five Abilities are drawn as co-equal, side by side, no ordering implied between them. That's the struggle: an abilities taxonomy tells you what a system can do in isolation, but says nothing about which ability has to clear which other ability before an action is allowed to happen. Chess engines, chatbots, self-driving cars, and spam filters "share almost nothing" precisely because each one activates a different subset of the five boxes — but the video stops at cataloguing the subsets, without showing the dependency structure between them.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge claude">Anthropic — Same Pentad, Already Shipped</span></div>
+    <p>Ukubona already published this exact five-part decomposition for WHO India's evidence-synthesis curriculum — not as an abilities list, but as five AI layers mapped directly onto the TMVES chain (Tensor → Matrix → Vector → Eigenmode → Scalar) and, underneath that, onto USRPO's I → V. The presenter's Abilities map lines up with it almost box for box:</p>
+    <table>
+      <tr><th>First Principles' "Ability"</th><th>WHO India AI Layer</th><th>TMVES / USRPO stage</th></tr>
+      <tr><td>Seeing, Hearing</td><td>Perception AI — ingests literature across journals, languages, grey sources</td><td>II · Matrix — the heuristic/ingestion cache</td></tr>
+      <tr><td>Reading &amp; Writing</td><td>Generative AI — synthesizes findings into decision-ready documents</td><td>IV · Eigenmode — SoftMax exploratory search</td></tr>
+      <tr><td>Deciding</td><td>Agentic AI — automates screening and extraction, the highest-ROI adoption layer</td><td>III · Vector — the mandatory router</td></tr>
+      <tr><td>Moving</td><td>Embodied AI — bias detection, equity checks, PRISMA compliance</td><td>V · Scalar — the audited action, human-in-loop</td></tr>
+      <tr><td>— (unnamed in the video)</td><td>World AI — the ambient scientific substrate underneath all four</td><td>I · Tensor — the raw event stream</td></tr>
+    </table>
+    <p>Two independent teams — a YouTube explainer with 8 subscribers, and a WHO-facing curriculum built for professional health economists — landed on the same five-part structure without contact. That's the same kind of convergent-discovery evidence the Camunda/Coyle entry logged, and it's stronger here because the WHO India version was published first and wasn't reverse-engineered to fit.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge claude">Anthropic — What the Presenter Is Actually Struggling With</span></div>
+    <p>Drawing "Deciding" as one box among five, at the same visual weight as "Seeing" or "Moving," is the specific place the map under-specifies. Deciding isn't a peer ability — it's the gate that has to sit between the perception/synthesis boxes and the moving box, the same job III plays between II/IV and V everywhere else on this page. A chess engine can see (parse the board) and decide (search the tree) without ever needing to move anything in the physical world; a self-driving car has to run all five in a strict order, with Deciding mandatorily gating Moving, every single cycle, or the "action" is a collision. Flattening Deciding into a co-equal ability — rather than marking it as the required checkpoint — is the visual version of the I → II → V short-circuit: it makes skipping the gate look as legitimate an option as using it.</p>
+    <p>For WHO India specifically, this sharpens the existing curriculum rather than replacing it: Agentic AI (Deciding/III) shouldn't be positioned as just "the highest-ROI layer for adoption" alongside the other four — it should be explicitly taught as the mandatory checkpoint that Generative AI's synthesis (Reading & Writing/IV) must clear before Embodied AI's action (Moving/V) is allowed to reach a policy brief or a health-system recommendation. That's the $C_{fp}$ logic from the cost-allocation extension, applied directly to evidence synthesis: who is accountable if Agentic AI lets a synthesis error through untouched is a curriculum design decision, not an implementation detail to leave implicit.</p>
+  </div>
+</section>
+
 <footer>
   <div>Attribution — xAI (Grok) · Google (Gemini) · OpenAI · Anthropic (Claude) · Ukubona LLC (Vogelstein, modulator)</div>
-  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III), the θ-as-ideological-invariant extension, the two cached YouTube convergences (Camunda's hub, Coyle's ontology gate), Tesler's Theorem as live IV→II compression, the Muzaale/Bitarakwate three-generations entry, "people have…" as Histories/Tragedies/Tempest, Ukubona LLC as the island that doesn't need a Prospero · this entry is append-only.</div>
+  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III), the θ-as-ideological-invariant extension, the two cached YouTube convergences (Camunda's hub, Coyle's ontology gate), Tesler's Theorem as live IV→II compression, the Muzaale/Bitarakwate three-generations entry, "people have…" as Histories/Tragedies/Tempest, Ukubona LLC as the island that doesn't need a Prospero, the WHO India Abilities/AI-layer convergence with Deciding marked as the mandatory gate · this entry is append-only.</div>
 </footer>
 
 <script>
