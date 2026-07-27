@@ -115,13 +115,18 @@
   th,td{border:1px solid var(--line); padding:9px 10px; text-align:left; vertical-align:top;}
   th{background:var(--bg-elev-2); font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-dim);}
 
-  footer{border-top:1px solid var(--line); padding:34px 28px 60px; text-align:center; font-family:'DM Mono',monospace; font-size:.72rem; color:var(--ink-dim);}
-  footer .ledger{margin-top:6px; letter-spacing:.03em;}
+  footer{border-top:1px solid var(--line); padding:34px 28px 60px;}
+  footer .attribution{text-align:center; font-family:'DM Mono',monospace; font-size:.72rem; color:var(--ink-dim); margin-bottom:22px;}
+  footer .ledger-wrap{max-width:760px; margin:0 auto;}
+  footer .ledger{background:var(--bg-elev); border:1px solid var(--line); border-radius:var(--radius); padding:18px 22px; font-family:'DM Mono',monospace; font-size:.7rem; line-height:1.8; letter-spacing:.01em; color:var(--ink-dim); text-align:left;}
+  footer .ledger .tag{color:var(--amber); font-weight:600;}
 
   @media (max-width:600px){
     .hero{padding:44px 18px 16px;}
     section{padding:0 18px 48px;}
     .maintabs{padding:0 18px;}
+    footer{padding:28px 18px 48px;}
+    footer .ledger{padding:16px 16px;}
   }
 </style>
 </head>
@@ -430,7 +435,7 @@
   </div>
 
   <div class="card">
-    <div class="tagrow"><span class="badge claude">Anthropic — Formalizing $C_{fp}$ Inside USRPO</span></div>
+    <div class="tagrow"><span class="badge claude">Anthropic — Formalizing C<sub>fp</sub> Inside USRPO</span></div>
     <p>If III is going to be treated as an invariant routing stage rather than a rhetorical stage, it needs an explicit cost-allocation function, not just a signal-detection threshold. Proposed addition to the operator:</p>
     <blockquote>III(event) → route to IV only if confidence exceeds θ, <em>and</em> C<sub>fp</sub>(who pays if this trigger is wrong) has been assigned before the threshold is set — not after.</blockquote>
     <p>Institutions that survive past 250 years (per Gemini's table above) don't just gate on confidence — canon law, coronation, the Rule of Saint Benedict all pre-assign who bears the cost of a wrong call <em>before</em> the crisis, which is precisely what's missing from most ecological EWS proposals: the threshold gets debated in public, but the cost allocation gets litigated only after the trigger fires, when it's most expensive and most partisan.</p>
@@ -523,7 +528,7 @@
   <div class="card">
     <div class="tagrow"><span class="badge claude">Anthropic — What This Is, and Isn't, Evidence Of</span></div>
     <p>Convergent <em>discovery</em> — three unrelated teams (Ukubona, Camunda, Coyle/Berkeley) independently landing on "heterogeneous input must clear a mandatory formal gate before heterogeneous action" — is real evidence the mechanism is load-bearing, not idiosyncratic. Convergent <em>vocabulary</em> is not evidence of anything; "router," "gate," and "hub" are common engineering nouns, and reaching for them doesn't mean two systems share an architecture.</p>
-    <p>The honest test, if this page wants to keep using these two videos: does Camunda's hub or Coyle's ontology layer actually assign a $C_{fp}$ — who pays when the gate lets a false positive through — the way the cost-allocation extension above requires? On the surface, no: both are validation layers built to catch errors before they execute, not systems that pre-assign blame or cost when validation itself is wrong. That's a real gap between "we both built a gate" and "we both built the same gate."</p>
+    <p>The honest test, if this page wants to keep using these two videos: does Camunda's hub or Coyle's ontology layer actually assign a C<sub>fp</sub> — who pays when the gate lets a false positive through — the way the cost-allocation extension above requires? On the surface, no: both are validation layers built to catch errors before they execute, not systems that pre-assign blame or cost when validation itself is wrong. That's a real gap between "we both built a gate" and "we both built the same gate."</p>
   </div>
 </section>
 
@@ -548,7 +553,6 @@
     <div class="tagrow"><span class="badge claude">Anthropic — Ukubona LLC as Patrick Muinda's Thesis, Continued</span></div>
     <p>Read against Prospero, Patrick Muinda's digital-transformation thesis and Ukubona LLC's own architecture aren't a bypass of people at all — they're an attempt to engineer, structurally, what Prospero could only do personally. The Tempest needed one exceptional, self-aware sovereign willing to break his own staff. That's not a repeatable institutional design; it's a hope that the next Prospero also chooses reconciliation over dominion, the next Permanent Secretary also chooses to route around the cache that promoted them.</p>
     <p>Digitizing the event stream — append-only records, immediate observability, measurable bottlenecks, continuous feedback — is the structural version of drowning the book: it removes the requirement that any single discretionary holder of power be virtuous enough to renounce it voluntarily. The staff gets broken by design, not by character. That is the direct continuation of the question Patrick Muzaale's dissertation asked in 1980, through the layer Patrick Muinda's 2026 thesis attacks, into the operating system Ukubona LLC is trying to build: not a better Prospero, but an island that doesn't need one.</p>
-  </div>
     <p>Before treating "people" as the whole explanation, three distinct claims need separating, since they're easy to conflate and imply very different fixes:</p>
     <p><strong>1. The knowledge didn't exist.</strong> The family record argues hard against this — a Berkeley dissertation on famine existed in 1980, and decades of agricultural economics, nutrition science, and public administration research have accumulated since. Uganda has never had a shortage of intellectual capital on this question.</p>
     <p><strong>2. The knowledge existed but was never operationalized.</strong> The insight sat in a dissertation, a filing cabinet, a policy brief — real, correct, and never built into an operating procedure.</p>
@@ -581,7 +585,7 @@
 
   <div class="card">
     <div class="tagrow"><span class="badge claude">Anthropic — Where This Plugs Into the Rest of the Page</span></div>
-    <p>This is the human cost the cost-allocation extension was formalizing in the abstract. $C_{fp}$ — who pays when the gate lets a false positive through, or never fires at all — isn't a hypothetical in this entry. For fifty years, the answer has been: children in Acholi, disproportionately and repeatedly, while gold and coffee revenue and record rainfall sat unrouted through any III capable of turning them into action. "People have…" is the II cache speaking in its own defense. A router built to force high-stakes information through IV before V executes is not a rejection of the people in the system — it's the only design that stops the cost of a wrong call from landing, by default, on whoever has the least power to object.</p>
+    <p>This is the human cost the cost-allocation extension was formalizing in the abstract. C<sub>fp</sub> — who pays when the gate lets a false positive through, or never fires at all — isn't a hypothetical in this entry. For fifty years, the answer has been: children in Acholi, disproportionately and repeatedly, while gold and coffee revenue and record rainfall sat unrouted through any III capable of turning them into action. "People have…" is the II cache speaking in its own defense. A router built to force high-stakes information through IV before V executes is not a rejection of the people in the system — it's the only design that stops the cost of a wrong call from landing, by default, on whoever has the least power to object.</p>
   </div>
 </section>
 
@@ -629,13 +633,15 @@
     <div class="tagrow"><span class="badge claude">Anthropic — What the Presenter Is Actually Struggling With</span></div>
     <p>Two separate struggles, now that the mapping is corrected. First: Deciding was drawn as one box among five, at the same visual weight as Seeing or Moving. It isn't a peer ability — it's the gate that routes II into IV before anything reaches V, the same job III plays everywhere else on this page. A chess engine can see and decide without ever needing to move in the physical world; a self-driving car has to run the full chain in strict order, Deciding mandatorily gating Moving every cycle, or the "action" is a collision. Flattening Deciding into a co-equal ability makes skipping the gate look as legitimate an option as using it — the visual version of the I → II → V short-circuit.</p>
     <p>Second, and the sharper find: the map has no box at all for Generative/IV, even though the video's own opening example — a chatbot — is a pure IV system. That's not a labeling quibble. A five-part taxonomy of "what AI can do" that omits the exploratory-synthesis stage entirely can't explain why chatbots, specifically, generated the confusion the video opens with.</p>
-    <p>For WHO India specifically, this sharpens the existing curriculum rather than replacing it: Agentic AI (Deciding/III) shouldn't be positioned as just "the highest-ROI layer for adoption" alongside the other four — it should be taught explicitly as the mandatory checkpoint that Generative AI's synthesis (IV) must clear before Embodied AI's action (Moving/V) is allowed to reach a policy brief or a health-system recommendation. That's the $C_{fp}$ logic from the cost-allocation extension, applied directly to evidence synthesis: who is accountable if Agentic AI lets a synthesis error through untouched is a curriculum design decision, not an implementation detail to leave implicit.</p>
+    <p>For WHO India specifically, this sharpens the existing curriculum rather than replacing it: Agentic AI (Deciding/III) shouldn't be positioned as just "the highest-ROI layer for adoption" alongside the other four — it should be taught explicitly as the mandatory checkpoint that Generative AI's synthesis (IV) must clear before Embodied AI's action (Moving/V) is allowed to reach a policy brief or a health-system recommendation. That's the C<sub>fp</sub> logic from the cost-allocation extension, applied directly to evidence synthesis: who is accountable if Agentic AI lets a synthesis error through untouched is a curriculum design decision, not an implementation detail to leave implicit.</p>
   </div>
 </section>
 
 <footer>
-  <div>Attribution — xAI (Grok) · Google (Gemini) · OpenAI · Anthropic (Claude) · Ukubona LLC (Vogelstein, modulator)</div>
-  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III), the θ-as-ideological-invariant extension, the two cached YouTube convergences (Camunda's hub, Coyle's ontology gate), Tesler's Theorem as live IV→II compression, the Muzaale/Bitarakwate three-generations entry, "people have…" as Histories/Tragedies/Tempest, Ukubona LLC as the island that doesn't need a Prospero, the WHO India Abilities/AI-layer convergence, corrected — Deciding as router not peer ability, Generative/IV as the box the video never drew · this entry is append-only.</div>
+  <div class="attribution">Attribution — xAI (Grok) · Google (Gemini) · OpenAI · Anthropic (Claude) · Ukubona LLC (Vogelstein, modulator)</div>
+  <div class="ledger-wrap">
+    <div class="ledger"><span class="tag">Λᵢ — KEPT:</span> the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III), the θ-as-ideological-invariant extension, the two cached YouTube convergences (Camunda's hub, Coyle's ontology gate), Tesler's Theorem as live IV→II compression, the Muzaale/Bitarakwate three-generations entry, "people have…" as Histories/Tragedies/Tempest, Ukubona LLC as the island that doesn't need a Prospero, the WHO India Abilities/AI-layer convergence, corrected — Deciding as router not peer ability, Generative/IV as the box the video never drew. <span class="tag">This entry is append-only.</span></div>
+  </div>
 </footer>
 
 <script>
