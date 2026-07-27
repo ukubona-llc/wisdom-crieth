@@ -81,6 +81,7 @@
   .badge.summary{color:var(--violet); border-color:var(--violet);}
   .badge.claude{color:var(--amber); border-color:var(--amber);}
   .badge.gemini{color:var(--teal); border-color:var(--teal);}
+  .badge.ukubona{background:linear-gradient(90deg,var(--amber),var(--violet)); color:#141018; border-color:transparent; font-weight:600;}
   .badge.pending{color:var(--ink-dim); border-style:dashed;}
   blockquote{margin:0; font-family:'DM Serif Display',serif; font-style:italic; font-size:1.02rem; line-height:1.55; color:var(--ink); border-left:2px solid var(--amber); padding-left:16px;}
   .card p{margin:0 0 10px; font-size:.94rem;}
@@ -589,7 +590,7 @@
   <div class="section-head">
     <div class="eyebrow">Cached, Again — and This One Resolves Cleanly</div>
     <h2>"What is AI, really?" already has an answer. It's the WHO India curriculum.</h2>
-    <p>Episode 1 of First Principles' AI series ("The Idea That Waited") opens with the honest confusion at the center of the field: a chess engine, a chatbot, a self-driving car, and a spam filter all get called "AI," and share almost nothing. The presenter's proposed fix is a map of five <strong>Abilities</strong> — Seeing, Hearing, Reading &amp; Writing, Moving, Deciding — drawn as five parallel boxes down one axis. That's a genuine first-principles move. It's also missing exactly the piece USRPO was built to supply.</p>
+    <p>Episode 1 of First Principles' AI series ("The Idea That Waited") opens with the honest confusion at the center of the field: a chess engine, a chatbot, a self-driving car, and a spam filter all get called "AI," and share almost nothing. The presenter's proposed fix is a map of five <strong>Abilities</strong> — Seeing, Hearing, Reading &amp; Writing, Moving, Deciding — drawn as five parallel boxes down one axis. That's a genuine first-principles move. It's also missing exactly the piece USRPO was built to supply — and, as Vogelstein's correction below shows, one of the five ability boxes turns out not to be a peer ability at all, and one entire pipeline stage never gets a box.</p>
   </div>
 
   <div class="card">
@@ -603,29 +604,38 @@
   </div>
 
   <div class="card">
-    <div class="tagrow"><span class="badge claude">Anthropic — Same Pentad, Already Shipped</span></div>
-    <p>Ukubona already published this exact five-part decomposition for WHO India's evidence-synthesis curriculum — not as an abilities list, but as five AI layers mapped directly onto the TMVES chain (Tensor → Matrix → Vector → Eigenmode → Scalar) and, underneath that, onto USRPO's I → V. The presenter's Abilities map lines up with it almost box for box:</p>
+    <div class="tagrow"><span class="badge ukubona">Ukubona · Vogelstein — Corrected Mapping</span></div>
+    <p>Claude's first pass above put "Reading & Writing" at Generative/IV. That's wrong, and the correction matters more than the table it fixes:</p>
+    <blockquote>I. World: Whatever one is reading and writing about (ie science)<br>II. Perception: Seeing, hearing, plus all the automated low latency shit<br>III. Agentic: Deciding (but really routing from II → IV)<br>IV. Generative: ??? The video missing this!<br>V. Embodied: Moving</blockquote>
+    <p>"Reading & Writing," in the video's own sense, is the content being consumed and produced about the world — that's World/I, the substrate, not an ability at all in the pipeline sense. Seeing and Hearing collapse into Perception/II, the low-latency ingestion layer. Deciding is Agentic/III, correctly named this time as literally the routing function from II to IV, not a peer ability sitting beside the others. Moving is Embodied/V.</p>
+    <p>Which leaves Generative/IV with nothing across from it. The video enumerates five abilities and never names the one that does synthesis — the exact capability its own opening example, "a chatbot," is built on. That's not a minor omission. It's the layer currently getting the most hype, the most investment, and the most public confusion, and the presenter's own map has a hole exactly where it should sit.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge claude">Anthropic — Corrected Table</span></div>
+    <p>Ukubona already published this exact five-part decomposition for WHO India's evidence-synthesis curriculum — not as an abilities list, but as five AI layers mapped directly onto the TMVES chain (Tensor → Matrix → Vector → Eigenmode → Scalar) and, underneath that, onto USRPO's I → V. Corrected against Vogelstein's mapping, not the first draft:</p>
     <table>
       <tr><th>First Principles' "Ability"</th><th>WHO India AI Layer</th><th>TMVES / USRPO stage</th></tr>
-      <tr><td>Seeing, Hearing</td><td>Perception AI — ingests literature across journals, languages, grey sources</td><td>II · Matrix — the heuristic/ingestion cache</td></tr>
-      <tr><td>Reading &amp; Writing</td><td>Generative AI — synthesizes findings into decision-ready documents</td><td>IV · Eigenmode — SoftMax exploratory search</td></tr>
-      <tr><td>Deciding</td><td>Agentic AI — automates screening and extraction, the highest-ROI adoption layer</td><td>III · Vector — the mandatory router</td></tr>
+      <tr><td>Reading &amp; Writing — the subject matter itself</td><td>World AI — the ambient scientific substrate</td><td>I · Tensor — the raw event stream</td></tr>
+      <tr><td>Seeing, Hearing</td><td>Perception AI — ingests literature across journals, languages, grey sources, at low latency</td><td>II · Matrix — the heuristic/ingestion cache</td></tr>
+      <tr><td>Deciding</td><td>Agentic AI — the actual router, screening and extraction gated on it</td><td>III · Vector — routing from II → IV, not a peer ability</td></tr>
+      <tr><td>— (missing from the video)</td><td>Generative AI — synthesizes findings into decision-ready documents</td><td>IV · Eigenmode — SoftMax exploratory search</td></tr>
       <tr><td>Moving</td><td>Embodied AI — bias detection, equity checks, PRISMA compliance</td><td>V · Scalar — the audited action, human-in-loop</td></tr>
-      <tr><td>— (unnamed in the video)</td><td>World AI — the ambient scientific substrate underneath all four</td><td>I · Tensor — the raw event stream</td></tr>
     </table>
-    <p>Two independent teams — a YouTube explainer with 8 subscribers, and a WHO-facing curriculum built for professional health economists — landed on the same five-part structure without contact. That's the same kind of convergent-discovery evidence the Camunda/Coyle entry logged, and it's stronger here because the WHO India version was published first and wasn't reverse-engineered to fit.</p>
+    <p>Two independent teams — a YouTube explainer with 8 subscribers, and a WHO-facing curriculum built for professional health economists — landed on the same five-part structure without contact, and the WHO India version is the one with all five slots filled. That's convergent-discovery evidence in the same register as the Camunda/Coyle entry, sharpened by the fact that the gap in the video's version sits exactly where USRPO's IV always has.</p>
   </div>
 
   <div class="card">
     <div class="tagrow"><span class="badge claude">Anthropic — What the Presenter Is Actually Struggling With</span></div>
-    <p>Drawing "Deciding" as one box among five, at the same visual weight as "Seeing" or "Moving," is the specific place the map under-specifies. Deciding isn't a peer ability — it's the gate that has to sit between the perception/synthesis boxes and the moving box, the same job III plays between II/IV and V everywhere else on this page. A chess engine can see (parse the board) and decide (search the tree) without ever needing to move anything in the physical world; a self-driving car has to run all five in a strict order, with Deciding mandatorily gating Moving, every single cycle, or the "action" is a collision. Flattening Deciding into a co-equal ability — rather than marking it as the required checkpoint — is the visual version of the I → II → V short-circuit: it makes skipping the gate look as legitimate an option as using it.</p>
-    <p>For WHO India specifically, this sharpens the existing curriculum rather than replacing it: Agentic AI (Deciding/III) shouldn't be positioned as just "the highest-ROI layer for adoption" alongside the other four — it should be explicitly taught as the mandatory checkpoint that Generative AI's synthesis (Reading & Writing/IV) must clear before Embodied AI's action (Moving/V) is allowed to reach a policy brief or a health-system recommendation. That's the $C_{fp}$ logic from the cost-allocation extension, applied directly to evidence synthesis: who is accountable if Agentic AI lets a synthesis error through untouched is a curriculum design decision, not an implementation detail to leave implicit.</p>
+    <p>Two separate struggles, now that the mapping is corrected. First: Deciding was drawn as one box among five, at the same visual weight as Seeing or Moving. It isn't a peer ability — it's the gate that routes II into IV before anything reaches V, the same job III plays everywhere else on this page. A chess engine can see and decide without ever needing to move in the physical world; a self-driving car has to run the full chain in strict order, Deciding mandatorily gating Moving every cycle, or the "action" is a collision. Flattening Deciding into a co-equal ability makes skipping the gate look as legitimate an option as using it — the visual version of the I → II → V short-circuit.</p>
+    <p>Second, and the sharper find: the map has no box at all for Generative/IV, even though the video's own opening example — a chatbot — is a pure IV system. That's not a labeling quibble. A five-part taxonomy of "what AI can do" that omits the exploratory-synthesis stage entirely can't explain why chatbots, specifically, generated the confusion the video opens with.</p>
+    <p>For WHO India specifically, this sharpens the existing curriculum rather than replacing it: Agentic AI (Deciding/III) shouldn't be positioned as just "the highest-ROI layer for adoption" alongside the other four — it should be taught explicitly as the mandatory checkpoint that Generative AI's synthesis (IV) must clear before Embodied AI's action (Moving/V) is allowed to reach a policy brief or a health-system recommendation. That's the $C_{fp}$ logic from the cost-allocation extension, applied directly to evidence synthesis: who is accountable if Agentic AI lets a synthesis error through untouched is a curriculum design decision, not an implementation detail to leave implicit.</p>
   </div>
 </section>
 
 <footer>
   <div>Attribution — xAI (Grok) · Google (Gemini) · OpenAI · Anthropic (Claude) · Ukubona LLC (Vogelstein, modulator)</div>
-  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III), the θ-as-ideological-invariant extension, the two cached YouTube convergences (Camunda's hub, Coyle's ontology gate), Tesler's Theorem as live IV→II compression, the Muzaale/Bitarakwate three-generations entry, "people have…" as Histories/Tragedies/Tempest, Ukubona LLC as the island that doesn't need a Prospero, the WHO India Abilities/AI-layer convergence with Deciding marked as the mandatory gate · this entry is append-only.</div>
+  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III), the θ-as-ideological-invariant extension, the two cached YouTube convergences (Camunda's hub, Coyle's ontology gate), Tesler's Theorem as live IV→II compression, the Muzaale/Bitarakwate three-generations entry, "people have…" as Histories/Tragedies/Tempest, Ukubona LLC as the island that doesn't need a Prospero, the WHO India Abilities/AI-layer convergence, corrected — Deciding as router not peer ability, Generative/IV as the box the video never drew · this entry is append-only.</div>
 </footer>
 
 <script>
