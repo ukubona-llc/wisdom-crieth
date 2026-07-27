@@ -234,6 +234,7 @@
   <button class="maintab-btn" data-maintab="costalloc" onclick="showMainTab('costalloc')">Extension · Who Pays for the Trigger</button>
   <button class="maintab-btn" data-maintab="theta" onclick="showMainTab('theta')">Extension · θ, Not Frequency</button>
   <button class="maintab-btn" data-maintab="ytcache" onclick="showMainTab('ytcache')">In My YouTube Cache</button>
+  <button class="maintab-btn" data-maintab="muzaale" onclick="showMainTab('muzaale')">Muzaale · Bitarakwate</button>
 </div>
 
 <!-- ============ TAB 1: EVENT STREAM ============ -->
@@ -524,9 +525,55 @@
   </div>
 </section>
 
+<!-- ============ TAB 6: MUZAALE · BITARAKWATE ============ -->
+<section id="main-muzaale" class="maintab-panel">
+  <div class="section-head">
+    <div class="eyebrow">Three Generations, One Question</div>
+    <h2>"People have…" — the most compressed token on this page.</h2>
+    <p>Patrick Muzaale's UC Berkeley doctoral work began in 1975; his 1980 dissertation examined hunger and famine in rural East Africa. In July 2026, Acholi lost an estimated 200–500 children to hunger and famine in a year of record rains, USD 6.6 billion in gold revenue, and USD 2.2 billion in coffee revenue. Asked how fifty years of insight failed to reach practice, his answer began "People have…" before Vogelstein cut him short — because two words were already a complete theory.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge summary">Roundtable — Three Hypotheses, Not One</span></div>
+    <p>Before treating "people" as the whole explanation, three distinct claims need separating, since they're easy to conflate and imply very different fixes:</p>
+    <p><strong>1. The knowledge didn't exist.</strong> The family record argues hard against this — a Berkeley dissertation on famine existed in 1980, and decades of agricultural economics, nutrition science, and public administration research have accumulated since. Uganda has never had a shortage of intellectual capital on this question.</p>
+    <p><strong>2. The knowledge existed but was never operationalized.</strong> The insight sat in a dissertation, a filing cabinet, a policy brief — real, correct, and never built into an operating procedure.</p>
+    <p><strong>3. The knowledge was operationalized, but incentives overwhelmed it.</strong> Procedures existed and were, at some point, followed — but got starved of budget, staffing, or political priority the moment they competed with something that protected someone's position.</p>
+    <p>Which of (2) or (3) dominates is an empirical question, not a rhetorical one — and in practice it's rarely a single villain called "people." Implementation capacity, fragmented institutions, procurement delays, political priorities, and accountability gaps all interact. "People have…" compresses all three hypotheses into one token, which is exactly why it needs to be unpacked rather than left to stand as the whole diagnosis.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge summary">Roundtable — Reframing the Question</span></div>
+    <p>The more useful move isn't asking "why don't people implement good ideas" — that question has no engineering answer, only a moral one. It's asking: <strong>how do we build institutions that require less discretionary heroism?</strong> That's a design question, and it reframes Patrick Muinda's 2026 Makerere thesis on digital transformation of TVES as something other than an anti-human bypass. What it actually redesigns is the routing architecture itself: events become observable immediately instead of annually, information becomes append-only instead of editable after the fact, bottlenecks become measurable instead of anecdotal, decisions leave an audit trail instead of a verbal record, and feedback becomes continuous instead of arriving once a year in a report. None of that removes people from the loop — it changes where in the loop human judgment is allowed to enter.</p>
+    <p>Read this way, "I see!" wasn't the father conceding the son's generation was right and his own was wrong. It was recognizing that each generation is attacking a different layer of the same standing problem:</p>
+    <table>
+      <tr><th>Generation</th><th>Question asked</th><th>Layer attacked</th></tr>
+      <tr><td>Patrick Muzaale, 1975–1980</td><td>Why does famine occur?</td><td>Diagnosis — the event stream itself</td></tr>
+      <tr><td>Patrick Muinda, 2026</td><td>Why doesn't the state respond quickly enough?</td><td>Latency — the cache-to-action pipeline</td></tr>
+      <tr><td>Ukubona LLC, 2026</td><td>What operating system makes delayed response structurally harder?</td><td>Architecture — the router itself, III → IV, made mandatory</td></tr>
+    </table>
+    <p>Three successive questions, not three competing answers — each one only becomes askable once the previous one has been answered.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge gemini">Google · Gemini — The Cache Is People</span></div>
+    <p>Gemini's framing of the same fifty-year gap, independently: the administrative system didn't fail to transfer the 1980 dissertation's insight for lack of knowledge. It's built to protect the people operating it — the bureaucracy is the cache, and its human gatekeepers are the firewall around it. Bitarakwate's continuous tenure as Permanent Secretary since 2015 isn't ironic in that reading; it's the system selecting, as it always has, for people who know how to keep the cache operational. The early-warning router, on that account, would have to route around the specific people whose institutional standing depends on the cache never being questioned — which is precisely the expensive, high-friction move a short-circuit is built to avoid.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge summary">Roundtable — Correcting an Epistemic Overreach</span></div>
+    <p>An earlier pass on Catherine Bitarakwate Musingwiire's career noted that her reported mentorship under Patrick Muzaale during his 1997–2013 Public Service Commission years is "not corroborated by open-source documentation" — technically accurate, but phrased in a way that implied skepticism the evidence didn't support. The corrected, epistemically honest version: the publicly available record documents her tenure prominently from her December 2015 appointment as Permanent Secretary onward, and provides relatively little detail about her earlier career. The claim of an earlier mentorship therefore cannot be confirmed from open sources — but it is also not contradicted by them. A low public profile before 2015 is exactly what would be expected regardless of whether the mentorship occurred; absence of documentation is absence, not counter-evidence.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge claude">Anthropic — Where This Plugs Into the Rest of the Page</span></div>
+    <p>This is the human cost the cost-allocation extension was formalizing in the abstract. $C_{fp}$ — who pays when the gate lets a false positive through, or never fires at all — isn't a hypothetical in this entry. For fifty years, the answer has been: children in Acholi, disproportionately and repeatedly, while gold and coffee revenue and record rainfall sat unrouted through any III capable of turning them into action. "People have…" is the II cache speaking in its own defense. A router built to force high-stakes information through IV before V executes is not a rejection of the people in the system — it's the only design that stops the cost of a wrong call from landing, by default, on whoever has the least power to object.</p>
+  </div>
+</section>
+
 <footer>
   <div>Attribution — xAI (Grok) · Google (Gemini) · OpenAI · Anthropic (Claude) · Ukubona LLC (Vogelstein, modulator)</div>
-  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III), the θ-as-ideological-invariant extension, the two cached YouTube convergences (Camunda's hub, Coyle's ontology gate), Tesler's Theorem as live IV→II compression · this entry is append-only.</div>
+  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III), the θ-as-ideological-invariant extension, the two cached YouTube convergences (Camunda's hub, Coyle's ontology gate), Tesler's Theorem as live IV→II compression, the Muzaale/Bitarakwate three-generations entry — the cache is people, and C<sub>fp</sub> lands on Acholi · this entry is append-only.</div>
 </footer>
 
 <script>
