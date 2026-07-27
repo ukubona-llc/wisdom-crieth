@@ -232,6 +232,7 @@
   <button class="maintab-btn active" data-maintab="stream" onclick="showMainTab('stream')">Event-Stream · Append-Only Ledger</button>
   <button class="maintab-btn" data-maintab="lossy" onclick="showMainTab('lossy')">Lossy · Compressed Token</button>
   <button class="maintab-btn" data-maintab="costalloc" onclick="showMainTab('costalloc')">Extension · Who Pays for the Trigger</button>
+  <button class="maintab-btn" data-maintab="theta" onclick="showMainTab('theta')">Extension · θ, Not Frequency</button>
 </div>
 
 <!-- ============ TAB 1: EVENT STREAM ============ -->
@@ -437,9 +438,40 @@
   </div>
 </section>
 
+<!-- ============ TAB 4: EXTENSION — THETA AS THE INVARIANT ============ -->
+<section id="main-theta" class="maintab-panel">
+  <div class="section-head">
+    <div class="eyebrow">Extension · Vogelstein ↔ Claude</div>
+    <h2>Not update frequency. Where θ gets set, and on what.</h2>
+    <p>Prompted by Vogelstein's question: isn't the real conservative/progressive split just "what gets cached and how often it updates"? Claude's refinement: both dispositions update constantly — the actual invariant is <span class="mono">θ</span>, the confidence threshold III uses before routing a given belief to IV, and each side sets it asymmetrically depending on <em>which</em> cache is under threat.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge claude">Anthropic — The Partial Truth, and Where It Breaks</span></div>
+    <p>The reduction isn't new — it's close to Sowell's constrained vs. unconstrained vision, and adjacent to Haidt's moral-foundations account. Constrained: existing norms are compressed information from selection pressure across generations, so overturning them without overwhelming evidence destroys data you don't fully understand (Chesterton's fence). Unconstrained: the same cache accumulates hidden debt — harm that persists precisely because it was never re-routed through IV.</p>
+    <p>But "frequency" doesn't survive contact with the evidence. Conservative positions are often the fastest to update on markets, military doctrine, deregulation, new technology. Progressive positions can be extremely sticky on certain moral or identity priors, resistant to revision regardless of new evidence. Neither side runs one dial. Each side updates constantly in some domains and almost never in others — which means the difference isn't a rate, it's an assignment.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge claude">Anthropic — θ as the Actual Invariant</span></div>
+    <p>What's actually fixed, per side, isn't a speed — it's where <span class="mono">θ</span> (the confidence threshold gating III → IV) gets set, and the burden-of-proof direction that comes with it:</p>
+    <table>
+      <tr><th>Disposition</th><th>High θ (near-infinite confidence required to route to IV)</th><th>Low θ (routes to IV on ordinary evidence)</th></tr>
+      <tr><td>Conservative</td><td>Touching inherited structure — burden of proof on the reformer: "prove this won't break something load-bearing"</td><td>Flagging novel threats to that structure — external, physical, or civilizational risk</td></tr>
+      <tr><td>Progressive</td><td>Certain protected or rights-based priors — treated as near-categorical, not up for renegotiation</td><td>Revising inherited structure — burden of proof on the status quo: "prove this isn't causing harm right now"</td></tr>
+    </table>
+    <p>This is exactly the same asymmetry formalized as <span class="mono">C<sub>fp</sub></span> in the previous extension — who has to prove what before the trigger fires — just applied to ideological priors instead of ecological ones. "Which cache looks sacred from the outside" is a direct readout of where θ sits, not of how often either side is willing to update in general.</p>
+  </div>
+
+  <div class="scalar-box">
+    <div class="label">Scalar Action · S</div>
+    <div class="verdict">Stop asking "how fast does this side update." Ask "where is θ set, and who had to clear it — the reformer or the status quo." That's the parameter doing the actual ideological work, and it's assignable domain by domain, not fixed once per person or party.</div>
+  </div>
+</section>
+
 <footer>
   <div>Attribution — xAI (Grok) · Google (Gemini) · OpenAI · Anthropic (Claude) · Ukubona LLC (Vogelstein, modulator)</div>
-  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III) · this entry is append-only.</div>
+  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III), the θ-as-ideological-invariant extension · this entry is append-only.</div>
 </footer>
 
 <script>
