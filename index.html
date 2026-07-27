@@ -486,8 +486,35 @@
 
   <div class="card">
     <div class="tagrow"><span class="badge summary">Cached — Frank Coyle, "Why Agentic Systems Need Ontologies," AI Engineer / UC Berkeley</span><span class="src mono">youtube.com/watch?v=Sir59K8ZDPU</span></div>
+    <div class="video-frame">
+      <div class="aspect">
+        <iframe src="https://www.youtube.com/embed/Sir59K8ZDPU" title="Why Agentic Systems Need Ontologies — Frank Coyle, UC Berkeley" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
     <p>Coyle's independent argument: LLM agents are probabilistic text generators that cannot, on their own, tell a well-formed hallucination from the truth — so a duplicate refund or a misrouted payout isn't a malfunction, it's the model doing exactly what it's built to do. His fix is an ontology — a formal, symbolic specification of a domain's concepts (built on W3C standards like OWL and RDFS) — sitting outside the model as a mandatory check before any tool call executes.</p>
     <p>He calls the resulting architecture "neuro-symbolic AI": neural creativity gated by deterministic symbolic constraint. That is, functionally, III → IV in different vocabulary — the ontology is the router, the model's probabilistic output is what gets held until it clears validation. Coyle traces this back to Tom Gruber's 1993 definition of ontology and a lineage running through McCarthy, Minsky, and Selfridge on the agent side — none of which has any contact with USRPO, which is what makes the convergence worth logging rather than the vocabulary worth celebrating.</p>
+  </div>
+
+  <div class="section-head" style="margin-top:34px;">
+    <div class="eyebrow">Cached — Its Own Section</div>
+    <h2>Tesler's Theorem: "AI is whatever hasn't been done yet."</h2>
+    <p>Also flagged by the algorithm, not sought. The claim behind the joke is a real, decades-old observation — sometimes called the AI effect, first stated by Larry Tesler and later written down by Douglas Hofstadter in <em>Gödel, Escher, Bach</em>: the moment a machine masters a task (arithmetic, chess, translation, Go), that task quietly stops counting as evidence of intelligence. The goalpost — "real" intelligence — always sits on whatever hasn't been automated yet.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge summary">Cached — "AI Isn't One Thing," First Principles</span><span class="src mono">youtube.com/watch?v=kpbv8MXEdog</span></div>
+    <div class="video-frame">
+      <div class="aspect">
+        <iframe src="https://www.youtube.com/embed/kpbv8MXEdog" title="AI Isn't One Thing — First Principles" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+    <p>Vogelstein's read is exact: Tesler's Theorem is a live description of IV, not a joke about goalposts. "Whatever hasn't been done yet" is by definition the frontier — the region the SoftMax exploratory search stage is still sampling, uncompressed, unresolved, still costing full epistemic effort per attempt. The moment a capability is mastered and routinized — chess engines, calculators, machine translation, now large swaths of code generation — it gets compressed and written back into II as a cheap, automatic heuristic. Nobody budgets conscious "intelligence" for long division anymore because long division has already been cached.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge claude">Anthropic — Why the Update Matters More Than the Definition</span></div>
+    <p>This reframes the AI-effect joke from a complaint about moving goalposts into a description of a healthy pipeline: IV → II compression is exactly what's supposed to happen when exploratory search succeeds. The goalposts aren't moving because people are ungrateful or in denial — they're moving because the compressed cache keeps swallowing whatever IV just solved, which frees IV to keep pointed at the next genuinely unresolved thing. A system where the goalposts stopped moving would be a system where nothing new was ever being routed out of IV and back into II — which is its own kind of stall, just the inverse of the I → II → V short-circuit this whole page started with.</p>
+    <p>The one caution: this only holds if the compression is honest. If "that's not real intelligence, machines can do it now" is used to permanently discount a capability's significance rather than to accurately update the cache, it's doing rhetorical work, not epistemic work — the same distinction this page keeps drawing between a cache that updates and a cache that just gets defended.</p>
   </div>
 
   <div class="card">
@@ -499,7 +526,7 @@
 
 <footer>
   <div>Attribution — xAI (Grok) · Google (Gemini) · OpenAI · Anthropic (Claude) · Ukubona LLC (Vogelstein, modulator)</div>
-  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III), the θ-as-ideological-invariant extension, the two cached YouTube convergences (Camunda's hub, Coyle's ontology gate) held apart from vocabulary-matching · this entry is append-only.</div>
+  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III), the θ-as-ideological-invariant extension, the two cached YouTube convergences (Camunda's hub, Coyle's ontology gate), Tesler's Theorem as live IV→II compression · this entry is append-only.</div>
 </footer>
 
 <script>
