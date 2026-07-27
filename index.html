@@ -231,6 +231,7 @@
 <div class="maintabs" role="tablist">
   <button class="maintab-btn active" data-maintab="stream" onclick="showMainTab('stream')">Event-Stream · Append-Only Ledger</button>
   <button class="maintab-btn" data-maintab="lossy" onclick="showMainTab('lossy')">Lossy · Compressed Token</button>
+  <button class="maintab-btn" data-maintab="costalloc" onclick="showMainTab('costalloc')">Extension · Who Pays for the Trigger</button>
 </div>
 
 <!-- ============ TAB 1: EVENT STREAM ============ -->
@@ -397,9 +398,48 @@
   </div>
 </section>
 
+<!-- ============ TAB 3: EXTENSION — COST ALLOCATION ============ -->
+<section id="main-costalloc" class="maintab-panel">
+  <div class="section-head">
+    <div class="eyebrow">Extension · Vogelstein ↔ Claude</div>
+    <h2>III isn't value-neutral. Someone has to pay when it fires.</h2>
+    <p>Prompted by Vogelstein's observation that conservative parties resist environmental early-warning systems, and his engineering instinct — "just build the router and pre-commit at trigger points." Claude's pushback: the mechanism is apolitical, but every parameter that makes the mechanism actually work is a value judgment wearing an engineering costume.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge claude">Anthropic — Where the "Just" Is Doing Too Much Work</span></div>
+    <p>Sensor → threshold → trigger → pre-commitment is a real, apolitical structure. Central banks run it (capital buffers), militaries run it (early-warning radar, DEFCON-style staged response), insurers run it (actuarial trigger points for reserve requirements) — often inside the same right-of-center institutions that resist an ecological version of the same mechanism. So the resistance isn't to III → IV routing as a category. It's to three specific, hidden parameters inside it:</p>
+    <p><strong>1. Where the threshold sits.</strong> A bank capital ratio has a clean, contractually defined trigger. Ecological systems rarely do — the uncertainty band is wide, and wherever you draw the line, someone eats the cost of a false positive and someone else eats the cost of a false negative. That's an allocation decision, not a measurement.</p>
+    <p><strong>2. Who pre-commits what.</strong> The up-front cost of a trigger typically lands on capital-intensive industries and still-industrializing economies; the deferred cost of not triggering lands on future generations and low-lying or agricultural regions. That's a distributional fight dressed as a technical spec.</p>
+    <p><strong>3. The discount rate.</strong> How much weight does harm in 2075 get against cost today? This single number, more than any climate-science input, is what actually divides serious policy economists — and it's a philosophical premise, not an engineering constant.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge summary">Reference — Discount-Rate Divide</span></div>
+    <table>
+      <tr><th>Position</th><th>Effective discount rate</th><th>Implication</th></tr>
+      <tr><td>Nordhaus (DICE model)</td><td>~3–4%, close to market rate</td><td>Future harm is heavily discounted; near-term action is modest, phased in over decades</td></tr>
+      <tr><td>Stern Review</td><td>~1.4%, near-zero pure time preference</td><td>Future generations weighted almost equally with the present; justifies large, immediate spending</td></tr>
+    </table>
+    <p>Same physical climate model, same event stream — the entire policy conclusion flips on one normative input. This is the "$$$" Vogelstein is pointing at: not a disagreement about the sensor, a disagreement about how much the future is worth in today's currency.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge claude">Anthropic — Formalizing $C_{fp}$ Inside USRPO</span></div>
+    <p>If III is going to be treated as an invariant routing stage rather than a rhetorical stage, it needs an explicit cost-allocation function, not just a signal-detection threshold. Proposed addition to the operator:</p>
+    <blockquote>III(event) → route to IV only if confidence exceeds θ, <em>and</em> C<sub>fp</sub>(who pays if this trigger is wrong) has been assigned before the threshold is set — not after.</blockquote>
+    <p>Institutions that survive past 250 years (per Gemini's table above) don't just gate on confidence — canon law, coronation, the Rule of Saint Benedict all pre-assign who bears the cost of a wrong call <em>before</em> the crisis, which is precisely what's missing from most ecological EWS proposals: the threshold gets debated in public, but the cost allocation gets litigated only after the trigger fires, when it's most expensive and most partisan.</p>
+  </div>
+
+  <div class="scalar-box">
+    <div class="label">Scalar Action · S</div>
+    <div class="verdict">Don't just engineer the trigger. Engineer the cost allocation <em>first</em>, and ratify it before anyone knows which side of the threshold they'll land on — the same move a well-drafted insurance contract or a Rawlsian veil makes on purpose.</div>
+  </div>
+</section>
+
 <footer>
   <div>Attribution — xAI (Grok) · Google (Gemini) · OpenAI · Anthropic (Claude) · Ukubona LLC (Vogelstein, modulator)</div>
-  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment · this entry is append-only.</div>
+  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III) · this entry is append-only.</div>
 </footer>
 
 <script>
