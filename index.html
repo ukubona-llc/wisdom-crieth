@@ -1,1 +1,364 @@
-.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ukubona · USRPO — Epistemic Router Collapse</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230b0a10'/%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='%23e0a458' stroke-width='3'/%3E%3Cpath d='M50,12 L72.3,80.7 L13.9,38.3 L86.1,38.3 L27.7,80.7 Z' fill='none' stroke='%23e0a458' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0a10; --bg-elev:#131119; --bg-elev-2:#1b1824;
+    --ink:#f2ede0; --ink-dim:#a8a2b8; --line:#2a2635;
+    --amber:#e0a458; --violet:#8b6fd6; --teal:#4fb3a9; --copper:#b87333;
+    --shadow:0 20px 60px rgba(0,0,0,.45); --radius:14px;
+  }
+  [data-theme="light"]{
+    --bg:#f5f1e8; --bg-elev:#ffffff; --bg-elev-2:#ece5d5;
+    --ink:#241f2e; --ink-dim:#6b6478; --line:#ddd3bd;
+    --shadow:0 12px 40px rgba(60,45,20,.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:'DM Sans',system-ui,sans-serif; line-height:1.6; transition:background .4s ease, color .4s ease;}
+  h1,h2,h3,.serif{font-family:'DM Serif Display',Georgia,serif; font-weight:400;}
+  .mono{font-family:'DM Mono',ui-monospace,monospace;}
+  a{color:var(--amber);}
+
+  header{position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:14px 28px; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .brand{display:flex; align-items:center; gap:14px;}
+  .brand-text .name{font-family:'DM Serif Display',serif; font-size:1.05rem;}
+  .brand-text .tag{font-family:'DM Mono',monospace; font-size:.68rem; color:var(--ink-dim); letter-spacing:.08em; text-transform:uppercase;}
+  .logo{width:38px; height:38px; flex-shrink:0;}
+  .logo svg{width:100%; height:100%; display:block;}
+  .logo .ring{animation:spin 40s linear infinite;}
+  .logo .star{animation:spin 40s linear infinite reverse;}
+  @media (prefers-reduced-motion:reduce){ .logo .ring,.logo .star{animation:none;} }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .toggle{display:flex; align-items:center; gap:8px; background:var(--bg-elev); border:1px solid var(--line); border-radius:999px; padding:5px 6px; font-family:'DM Mono',monospace; font-size:.72rem; color:var(--ink-dim);}
+  .toggle button{border:none; background:transparent; color:inherit; cursor:pointer; padding:6px 12px; border-radius:999px; font-family:inherit; font-size:inherit; transition:all .25s ease;}
+  .toggle button.active{background:var(--amber); color:#141018; font-weight:600;}
+
+  .hero{max-width:940px; margin:0 auto; padding:60px 28px 20px; text-align:center;}
+  .eyebrow{font-family:'DM Mono',monospace; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--teal); margin-bottom:14px;}
+  h1{font-size:clamp(2rem,5vw,3rem); margin:0 0 16px; line-height:1.14;}
+  h1 em{font-style:italic; color:var(--amber);}
+  .lede{color:var(--ink-dim); font-size:1.05rem; max-width:660px; margin:0 auto 10px;}
+  .lede.small{font-size:.88rem; max-width:600px;}
+
+  section{max-width:940px; margin:0 auto; padding:0 28px 60px;}
+  .section-head{margin-bottom:26px;}
+  .section-head .eyebrow{margin-bottom:8px;}
+  .section-head h2{font-size:1.7rem; margin:0 0 8px;}
+  .section-head p{color:var(--ink-dim); max-width:640px; margin:0;}
+
+  /* page-level tabs */
+  .maintabs{display:flex; gap:6px; max-width:940px; margin:30px auto 0; padding:0 28px;}
+  .maintab-btn{flex:1; font-family:'DM Mono',monospace; font-size:.78rem; letter-spacing:.03em; text-transform:uppercase; background:var(--bg-elev); border:1px solid var(--line); color:var(--ink-dim); cursor:pointer; padding:14px 10px; border-radius:10px 10px 0 0; transition:all .2s ease;}
+  .maintab-btn.active{color:var(--amber); border-color:var(--amber); background:var(--bg-elev-2);}
+  .maintab-panel{display:none;}
+  .maintab-panel.active{display:block; animation:fade .35s ease;}
+  @keyframes fade{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+
+  .voices{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; margin-bottom:8px;}
+  .voice{background:var(--bg-elev); border:1px solid var(--line); border-radius:var(--radius); padding:18px 18px 16px; position:relative; overflow:hidden;}
+  .voice::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px;}
+  .voice.xai::before{background:var(--violet);}
+  .voice.google::before{background:var(--teal);}
+  .voice.openai::before{background:var(--ink-dim);}
+  .voice.anthropic::before{background:var(--amber);}
+  .voice.ukubona::before{background:linear-gradient(var(--amber),var(--violet));}
+  .voice .who{font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-dim); margin-bottom:6px;}
+  .voice .role{font-family:'DM Serif Display',serif; font-size:1.1rem; margin-bottom:8px;}
+  .voice .desc{font-size:.85rem; color:var(--ink-dim);}
+  .voice.pending{opacity:.55; border-style:dashed;}
+
+  .card{background:var(--bg-elev); border:1px solid var(--line); border-radius:var(--radius); padding:22px 24px; margin-bottom:16px;}
+  .card .tagrow{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; flex-wrap:wrap;}
+  .badge{font-family:'DM Mono',monospace; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; padding:3px 9px; border-radius:999px; border:1px solid var(--line); color:var(--ink-dim);}
+  .badge.verbatim{color:var(--teal); border-color:var(--teal);}
+  .badge.summary{color:var(--violet); border-color:var(--violet);}
+  .badge.claude{color:var(--amber); border-color:var(--amber);}
+  .badge.pending{color:var(--ink-dim); border-style:dashed;}
+  blockquote{margin:0; font-family:'DM Serif Display',serif; font-style:italic; font-size:1.02rem; line-height:1.55; color:var(--ink); border-left:2px solid var(--amber); padding-left:16px;}
+  .card p{margin:0 0 10px; font-size:.94rem;}
+  .card p:last-child{margin-bottom:0;}
+  .src{font-family:'DM Mono',monospace; font-size:.7rem; color:var(--ink-dim);}
+
+  .scalar-box{background:var(--bg-elev-2); border:1px solid var(--amber); border-radius:var(--radius); padding:22px 24px; text-align:center; margin-top:20px;}
+  .scalar-box .label{font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--amber); margin-bottom:8px;}
+  .scalar-box .verdict{font-family:'DM Serif Display',serif; font-size:1.2rem;}
+
+  .chain{display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-family:'DM Mono',monospace; font-size:.76rem; color:var(--ink-dim); margin:16px 0 22px;}
+  .chain span.node{color:var(--ink); background:var(--bg-elev-2); border:1px solid var(--line); padding:4px 10px; border-radius:8px;}
+  .chain span.node.dead{color:#c0605f; border-color:#c0605f; text-decoration:line-through;}
+  .chain span.arrow{color:var(--amber);}
+
+  /* USRPO svg diagram */
+  .usrpo-diagram{background:var(--bg-elev); border:1px solid var(--line); border-radius:var(--radius); padding:20px; margin-bottom:24px;}
+  .usrpo-diagram svg{width:100%; height:auto; display:block;}
+
+  /* video */
+  .video-frame{border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow); background:var(--bg-elev); margin-bottom:14px;}
+  .video-frame .aspect{position:relative; width:100%; padding-top:56.25%;}
+  .video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+  .video-caption{margin-bottom:18px; font-family:'DM Mono',monospace; font-size:.72rem; color:var(--ink-dim); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:26px;}
+  .chip{font-family:'DM Mono',monospace; font-size:.74rem; background:var(--bg-elev); border:1px solid var(--line); color:var(--ink-dim); padding:8px 12px; border-radius:999px; cursor:pointer; transition:all .2s ease;}
+  .chip:hover{border-color:var(--amber); color:var(--amber);}
+  .chip.active{background:var(--amber); color:#141018; border-color:var(--amber); font-weight:600;}
+
+  table{width:100%; border-collapse:collapse; margin-top:8px; font-size:.88rem;}
+  th,td{border:1px solid var(--line); padding:9px 10px; text-align:left; vertical-align:top;}
+  th{background:var(--bg-elev-2); font-family:'DM Mono',monospace; font-size:.7rem; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-dim);}
+
+  footer{border-top:1px solid var(--line); padding:34px 28px 60px; text-align:center; font-family:'DM Mono',monospace; font-size:.72rem; color:var(--ink-dim);}
+  footer .ledger{margin-top:6px; letter-spacing:.03em;}
+
+  @media (max-width:600px){
+    .hero{padding:44px 18px 16px;}
+    section{padding:0 18px 48px;}
+    .maintabs{padding:0 18px;}
+  }
+</style>
+</head>
+<body data-theme="dark">
+
+<header>
+  <div class="brand">
+    <div class="logo">
+      <svg viewBox="0 0 100 100">
+        <circle class="ring" cx="50" cy="50" r="42" fill="none" stroke="var(--amber)" stroke-width="2.5"/>
+        <path class="star" d="M50,12 L72.3,80.7 L13.9,38.3 L86.1,38.3 L27.7,80.7 Z" fill="none" stroke="var(--violet)" stroke-width="2.5" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <div class="name">Ukubona LLC</div>
+      <div class="tag">Twin · Operating · Ecosystem</div>
+    </div>
+  </div>
+  <div class="toggle" role="group" aria-label="Theme toggle">
+    <button id="btn-dark" class="active" onclick="setTheme('dark')">Dark</button>
+    <button id="btn-light" onclick="setTheme('light')">Light</button>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="eyebrow">USRPO Roundtable Session · Epistemic Router Collapse</div>
+  <h1>Not truth. A <em>badass, updatable</em> token.</h1>
+  <p class="lede">Truth isn't a proof you file once — it's a relationship you keep choosing, the same way a marriage, a company, or an empire only survives by staying coupled to its own event stream. This page doesn't settle anything. It's the append-only ledger, and the compressed scalar someone still has to act on.</p>
+  <p class="lede small">Grounding object: Lawrence Wilkerson &amp; Glenn Diesen, <em>"Iran War Escalates Toward Global Crisis"</em> — timestamps below sourced from Google · Gemini's original transcript pass.</p>
+</div>
+
+<section>
+  <div class="section-head">
+    <div class="eyebrow">The Spine</div>
+    <h2>USRPO — five stages, one failure mode.</h2>
+    <p>Ukubona Sequential Recursive Pentadic Operators. An institution stays alive only while all five stages route through each other. Collapse begins the moment III is skipped.</p>
+  </div>
+  <div class="usrpo-diagram">
+    <svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--amber)"/>
+        </marker>
+      </defs>
+      <!-- nodes -->
+      <g font-family="DM Mono, monospace" font-size="13">
+        <circle cx="80" cy="110" r="46" fill="var(--bg-elev-2)" stroke="var(--copper)" stroke-width="3"/>
+        <text x="80" y="105" text-anchor="middle" fill="var(--ink)" font-weight="700">I</text>
+        <text x="80" y="122" text-anchor="middle" fill="var(--ink-dim)" font-size="10">Event Stream</text>
+
+        <circle cx="260" cy="110" r="46" fill="var(--bg-elev-2)" stroke="var(--teal)" stroke-width="3"/>
+        <text x="260" y="105" text-anchor="middle" fill="var(--ink)" font-weight="700">II</text>
+        <text x="260" y="122" text-anchor="middle" fill="var(--ink-dim)" font-size="10">Heuristic Cache</text>
+
+        <circle cx="450" cy="110" r="46" fill="var(--bg-elev-2)" stroke="var(--amber)" stroke-width="3" stroke-dasharray="6 4"/>
+        <text x="450" y="105" text-anchor="middle" fill="var(--amber)" font-weight="700">III</text>
+        <text x="450" y="122" text-anchor="middle" fill="var(--ink-dim)" font-size="10">Early-Warning Router</text>
+
+        <circle cx="640" cy="110" r="46" fill="var(--bg-elev-2)" stroke="var(--violet)" stroke-width="3"/>
+        <text x="640" y="105" text-anchor="middle" fill="var(--ink)" font-weight="700">IV</text>
+        <text x="640" y="122" text-anchor="middle" fill="var(--ink-dim)" font-size="10">SoftMax Search</text>
+
+        <circle cx="820" cy="110" r="46" fill="var(--bg-elev-2)" stroke="#c0605f" stroke-width="3"/>
+        <text x="820" y="105" text-anchor="middle" fill="var(--ink)" font-weight="700">V</text>
+        <text x="820" y="122" text-anchor="middle" fill="var(--ink-dim)" font-size="10">Action</text>
+      </g>
+      <!-- healthy path -->
+      <path d="M126,95 C 170,60 216,60 214,95" fill="none" stroke="var(--amber)" stroke-width="2" marker-end="url(#arrow)"/>
+      <path d="M306,95 C 350,60 396,60 404,95" fill="none" stroke="var(--amber)" stroke-width="2" marker-end="url(#arrow)"/>
+      <path d="M496,95 C 540,60 586,60 594,95" fill="none" stroke="var(--amber)" stroke-width="2" marker-end="url(#arrow)"/>
+      <path d="M686,95 C 730,60 776,60 774,95" fill="none" stroke="var(--amber)" stroke-width="2" marker-end="url(#arrow)"/>
+      <!-- collapse shortcut -->
+      <path d="M100,150 C 300,210 620,210 800,150" fill="none" stroke="#c0605f" stroke-width="2" stroke-dasharray="4 5" marker-end="url(#arrow)"/>
+      <text x="450" y="205" text-anchor="middle" fill="#c0605f" font-family="DM Mono, monospace" font-size="11">short-circuit — I → II → V, when III and IV are bypassed</text>
+    </svg>
+  </div>
+  <div class="chain">
+    <span class="node">I Event Stream</span><span class="arrow">→</span>
+    <span class="node">II Heuristic Cache</span><span class="arrow">→</span>
+    <span class="node dead">III Router — skipped</span><span class="arrow">→</span>
+    <span class="node dead">IV Search — skipped</span><span class="arrow">→</span>
+    <span class="node">V Action, cheap and brittle</span>
+  </div>
+</section>
+
+<div class="maintabs" role="tablist">
+  <button class="maintab-btn active" data-maintab="stream" onclick="showMainTab('stream')">Event-Stream · Append-Only Ledger</button>
+  <button class="maintab-btn" data-maintab="lossy" onclick="showMainTab('lossy')">Lossy · Compressed Token</button>
+</div>
+
+<!-- ============ TAB 1: EVENT STREAM ============ -->
+<section id="main-stream" class="maintab-panel active">
+  <div class="section-head">
+    <div class="eyebrow">The Table</div>
+    <h2>xAI → Google → OpenAI → Anthropic → Ukubona, in order received.</h2>
+    <p>Nothing here is edited after the fact. Entries close when a model stops speaking, not when the thread resolves.</p>
+  </div>
+  <div class="voices">
+    <div class="voice xai pending">
+      <div class="who">xAI</div>
+      <div class="role">Not Yet Run</div>
+      <div class="desc">This leg of the roundtable hasn't been convened on the Wilkerson/Diesen tensor. Ledger stays open until it is.</div>
+    </div>
+    <div class="voice google">
+      <div class="who">Google · Gemini</div>
+      <div class="role">The Timestamp Grounding</div>
+      <div class="desc">Walked the raw video and returned the five moments where the transcript itself shows the router being bypassed — the ?start= values the embed below runs on.</div>
+    </div>
+    <div class="voice openai">
+      <div class="who">OpenAI</div>
+      <div class="role">The Recursion, Applied to People</div>
+      <div class="desc">Took the "Dory" framing off of women and put it back on the actual invariant: any enduring system — marriage, company, empire — survives by continuous re-coupling to its own event stream, not by a proof completed once.</div>
+    </div>
+    <div class="voice anthropic">
+      <div class="who">Anthropic · Claude</div>
+      <div class="role">The Institutional Diagnosis</div>
+      <div class="desc">Named the failure mode as epistemic router collapse and cross-checked it against the handful of embodied institutions that have actually run III → IV for centuries without short-circuiting.</div>
+    </div>
+    <div class="voice ukubona">
+      <div class="who">Ukubona · Vogelstein</div>
+      <div class="role">Modulator</div>
+      <div class="desc">Set the tensor (the interview), rejected the lazy read of the Dory joke, and is holding every voice above to one standard: is this token still updatable, or did it just get quieter?</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge summary">OpenAI — Recursion Applied to Relationships</span><span class="src mono">paraphrase, not verbatim</span></div>
+    <p>A relationship, a leadership role, a scientific field — none of them close on a proof. Each is a recursive control problem: today's action becomes tomorrow's event, and yesterday's winning policy stops being optimal the moment the environment it was tuned to keeps moving. "You have to keep choosing each other" is a recursive algorithm, not a completed theorem — and it's the same reason Henry V doesn't declare leadership solved after Agincourt, or a startup declare product-market fit solved after the first customer.</p>
+    <p>Extended to publication: a peer-reviewed paper is a high-quality compression, but it freezes at <span class="mono">t₀</span> while reality keeps generating <span class="mono">t₁, t₂, t₃…</span>. Science has always patched this with replication and follow-up — the community plays the role of III externally, at a latency of years. A digital twin's whole claim is collapsing that latency: making III endogenous, so the object never stops being coupled to its own event stream.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge claude">Anthropic — Epistemic Router Collapse</span><span class="src mono">this contribution</span></div>
+    <p>The Wilkerson/Diesen conversation is a clean empirical case of <span class="mono">III → ∅</span>. Washington's posture toward Iran and Russia, in Wilkerson's account, no longer runs a strategic calculation — it fires a pre-loaded, ideological cache directly into action, with no exploratory search stage generating alternative outcomes before commitment. Diesen's Kennan callback names the same defect from the other side: the constraint was never information, it was the willingness to sample new coordinates on the policy manifold at all.</p>
+    <p>Short-circuits are cheap for a reason — near-zero latency, near-zero energy, because they skip the expensive stage. But cheap now compounds into brittle later: without IV, the system can't compute a gradient update when the terrain shifts, so the cost of maintaining the illusion of control keeps climbing until something breaks it from outside.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge claude">Anthropic — What Actually Survives Past 250 Years</span></div>
+    <p>Institutions that outlast empires by centuries share one design trait: a formal, high-latency gate that forces IV to run before V executes — an ecumenical council, a papal encyclical, a monastic rule, a coronation. The cost of that gate is slowness. The payoff is that the doctrinal cache updates on purpose, instead of only ever getting rewritten by collapse.</p>
+    <table>
+      <tr><th>Institution</th><th>Continuous existence</th><th>What runs III → IV</th></tr>
+      <tr><td>Roman Empire (West + East)</td><td>~1,500 yrs combined</td><td>Bureaucratic and military succession law</td></tr>
+      <tr><td>Roman Catholic Church</td><td>~1,900+ yrs</td><td>Apostolic succession, canon law, councils</td></tr>
+      <tr><td>Japanese Imperial Line</td><td>~1,500+ yrs</td><td>Symbolic continuity separated from executive risk</td></tr>
+      <tr><td>Eastern Orthodox Patriarchates</td><td>~1,600+ yrs</td><td>Synodal governance across territorial collapse</td></tr>
+      <tr><td>University of al-Qarawiyyin</td><td>~1,167 yrs</td><td>Waqf endowment trust surviving dynastic change</td></tr>
+      <tr><td>The British Crown</td><td>~1,000+ yrs</td><td>Constitutional absorption of internal rupture</td></tr>
+      <tr><td>Benedictine Order</td><td>~1,500 yrs</td><td>A fixed invariant token — the Rule — held modularly</td></tr>
+    </table>
+  </div>
+
+  <div class="section-head" style="margin-top:34px;">
+    <div class="eyebrow">Grounding Object</div>
+    <h2>The tensor the roundtable is running on.</h2>
+    <p>One video, five Gemini-sourced timestamps. Tap a chip to jump the embed — the ?start= parameter is the value Gemini returned.</p>
+  </div>
+
+  <div class="video-frame">
+    <div class="aspect">
+      <iframe id="wilkerson-embed" src="https://www.youtube.com/embed/EfKReR8i6W0?start=81" title="Lawrence Wilkerson: Iran War Escalates Toward Global Crisis" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+  <div class="video-caption">
+    <span>Glenn Diesen · Greater Eurasia Podcast — Lawrence Wilkerson, "Iran War Escalates Toward Global Crisis"</span>
+    <span><a href="https://www.youtube.com/watch?v=EfKReR8i6W0" target="_blank" rel="noopener">youtube.com/watch?v=EfKReR8i6W0 ↗</a></span>
+  </div>
+  <div class="chips">
+    <button class="chip active" data-t="81" onclick="jump(this,81)">00:01:21 — cache over calculation</button>
+    <button class="chip" data-t="199" onclick="jump(this,199)">00:03:19 — Gulf fragility, unmodeled</button>
+    <button class="chip" data-t="559" onclick="jump(this,559)">00:09:19 — no strategic purpose</button>
+    <button class="chip" data-t="918" onclick="jump(this,918)">00:15:18 — Kennan on political imagination</button>
+    <button class="chip" data-t="1092" onclick="jump(this,1092)">00:18:12 — long-horizon pressure, ignored</button>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge verbatim">Verbatim — Wilkerson, via Diesen transcript</span><span class="src mono">singjupost.com, July 23 2026</span></div>
+    <blockquote>"We are married very much to the status quo."</blockquote>
+    <p>Diesen's own gloss on Kennan's 1990s question — why does political imagination stay boxed inside the frame the last war built — is the plainest statement of a cache that never got asked to justify itself against a live alternative.</p>
+  </div>
+</section>
+
+<!-- ============ TAB 2: LOSSY COMPRESSION ============ -->
+<section id="main-lossy" class="maintab-panel">
+  <div class="section-head">
+    <div class="eyebrow">The Compression Chain, applied to this page</div>
+    <h2>Tensor → Scalar, live.</h2>
+  </div>
+  <div class="chain">
+    <span class="node">3+ Tensor — Wilkerson/Diesen transcript, 4 models, 1 modulator</span>
+    <span class="arrow">→</span>
+    <span class="node">2 Matrix — five Gemini timestamps, cross-checked against seven institutions</span>
+    <span class="arrow">→</span>
+    <span class="node">1 Vector — cache-over-calculation, named as a repeating pattern</span>
+    <span class="arrow">→</span>
+    <span class="node">E Eigenmode — III → IV routing is the invariant that separates survival from short-circuit</span>
+    <span class="arrow">→</span>
+    <span class="node">0 Scalar — verdict below</span>
+  </div>
+
+  <div class="card">
+    <p><strong>xAI</strong> → pending. The ledger doesn't fill this in on someone else's behalf.</p>
+    <p><strong>Gemini</strong> → the collapse is timestamped, not theoretical — 00:15:18 is where the interview says the quiet part out loud.</p>
+    <p><strong>OpenAI</strong> → truth isn't the object. Continuous re-coupling to the event stream is. A marriage, a paper, a policy — all die the same way, by freezing.</p>
+    <p><strong>Claude</strong> → institutions that outlive empires all pay the same tax: a slow, formal gate before action. Cheap now is brittle later.</p>
+    <p><strong>Ukubona</strong> → the question was never "is this true." It's "does this token still update when the world moves." A badass token is one that keeps earning its keep, iteration after iteration — not one that got it right once and stopped listening.</p>
+  </div>
+
+  <div class="scalar-box">
+    <div class="label">Scalar Action · S</div>
+    <div class="verdict">Route every high-stakes cache through III before V fires. A token's quality isn't whether it was right at <span class="mono">t₀</span> — it's whether it's still willing to be wrong at <span class="mono">t₁</span>.</div>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <div class="tagrow"><span class="badge pending">Not a Scalar — Λᵢ Fragment</span></div>
+    <p>The Dory joke doesn't compress cleanly, and that's fine. The honest read isn't "women forget" — it's that no relationship, including the one between an institution and its own evidence, gets to bank credit forever. Left here, unresolved on purpose, because forcing it into the scalar above would be exactly the short-circuit this page is arguing against.</p>
+  </div>
+</section>
+
+<footer>
+  <div>Attribution — xAI (pending) · Google (Gemini) · OpenAI · Anthropic (Claude) · Ukubona LLC (Vogelstein, modulator)</div>
+  <div class="ledger">Λᵢ — KEPT: the USRPO diagram, the five timestamps, the institutional table, the unresolved fragment · this entry is append-only.</div>
+</footer>
+
+<script>
+  function setTheme(mode){
+    document.body.setAttribute('data-theme', mode);
+    document.getElementById('btn-dark').classList.toggle('active', mode==='dark');
+    document.getElementById('btn-light').classList.toggle('active', mode==='light');
+  }
+  function showMainTab(name){
+    document.querySelectorAll('.maintab-btn').forEach(b=>b.classList.toggle('active', b.dataset.maintab===name));
+    document.querySelectorAll('.maintab-panel').forEach(p=>p.classList.toggle('active', p.id==='main-'+name));
+  }
+  function jump(btn, seconds){
+    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('wilkerson-embed').src = 'https://www.youtube.com/embed/EfKReR8i6W0?start=' + seconds + '&autoplay=1';
+  }
+</script>
+</body>
+</html>
