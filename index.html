@@ -233,6 +233,7 @@
   <button class="maintab-btn" data-maintab="lossy" onclick="showMainTab('lossy')">Lossy · Compressed Token</button>
   <button class="maintab-btn" data-maintab="costalloc" onclick="showMainTab('costalloc')">Extension · Who Pays for the Trigger</button>
   <button class="maintab-btn" data-maintab="theta" onclick="showMainTab('theta')">Extension · θ, Not Frequency</button>
+  <button class="maintab-btn" data-maintab="ytcache" onclick="showMainTab('ytcache')">In My YouTube Cache</button>
 </div>
 
 <!-- ============ TAB 1: EVENT STREAM ============ -->
@@ -469,9 +470,36 @@
   </div>
 </section>
 
+<!-- ============ TAB 5: IN MY YOUTUBE CACHE ============ -->
+<section id="main-ytcache" class="maintab-panel">
+  <div class="section-head">
+    <div class="eyebrow">In My YouTube Cache · flagged by the algorithm, not sought out</div>
+    <h2>Two industry talks that independently reinvented III — without ever hearing of USRPO.</h2>
+    <p>Neither of these was found by searching for "epistemic router" or "III → IV." Both surfaced in the recommendation feed on the strength of prior watch history — which is exactly the II cache Vogelstein flagged on himself in real time ("my cache tells me so"). Kept here deliberately unresolved as to whether that's confirmation bias or convergent discovery, because the two aren't the same claim and this page shouldn't pretend they are.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge summary">Cached — Camunda, "Powering Agentic Orchestration at Scale"</span><span class="src mono">youtube.com/watch?v=mEG7Co3Wwqw</span></div>
+    <p>Camunda's diagram routes four heterogeneous executor types (AI Agents, Human Tasks, IDP, RPA) through a single mandatory hub before they reach four heterogeneous integration targets (Marketplace, APIs, Microservices, Decision Intelligence). Structurally that hub is a genuine III — nothing crosses from left to right without clearing it first, the same mandatory-gate property that defines the router in USRPO.</p>
+    <p><strong>Where the resemblance stops:</strong> Camunda's hub is a discrete, symbolic orchestration engine — explicit process definitions (BPMN), not a learned embedding space. It's a router in the traffic-cop sense, not in the mixture-of-experts / latent-space sense. Worth keeping "mandatory gate" and "continuous embedding" as two different claims — the first is what Camunda actually built, the second is a pattern-match that overreaches.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge summary">Cached — Frank Coyle, "Why Agentic Systems Need Ontologies," AI Engineer / UC Berkeley</span><span class="src mono">youtube.com/watch?v=Sir59K8ZDPU</span></div>
+    <p>Coyle's independent argument: LLM agents are probabilistic text generators that cannot, on their own, tell a well-formed hallucination from the truth — so a duplicate refund or a misrouted payout isn't a malfunction, it's the model doing exactly what it's built to do. His fix is an ontology — a formal, symbolic specification of a domain's concepts (built on W3C standards like OWL and RDFS) — sitting outside the model as a mandatory check before any tool call executes.</p>
+    <p>He calls the resulting architecture "neuro-symbolic AI": neural creativity gated by deterministic symbolic constraint. That is, functionally, III → IV in different vocabulary — the ontology is the router, the model's probabilistic output is what gets held until it clears validation. Coyle traces this back to Tom Gruber's 1993 definition of ontology and a lineage running through McCarthy, Minsky, and Selfridge on the agent side — none of which has any contact with USRPO, which is what makes the convergence worth logging rather than the vocabulary worth celebrating.</p>
+  </div>
+
+  <div class="card">
+    <div class="tagrow"><span class="badge claude">Anthropic — What This Is, and Isn't, Evidence Of</span></div>
+    <p>Convergent <em>discovery</em> — three unrelated teams (Ukubona, Camunda, Coyle/Berkeley) independently landing on "heterogeneous input must clear a mandatory formal gate before heterogeneous action" — is real evidence the mechanism is load-bearing, not idiosyncratic. Convergent <em>vocabulary</em> is not evidence of anything; "router," "gate," and "hub" are common engineering nouns, and reaching for them doesn't mean two systems share an architecture.</p>
+    <p>The honest test, if this page wants to keep using these two videos: does Camunda's hub or Coyle's ontology layer actually assign a $C_{fp}$ — who pays when the gate lets a false positive through — the way the cost-allocation extension above requires? On the surface, no: both are validation layers built to catch errors before they execute, not systems that pre-assign blame or cost when validation itself is wrong. That's a real gap between "we both built a gate" and "we both built the same gate."</p>
+  </div>
+</section>
+
 <footer>
   <div>Attribution — xAI (Grok) · Google (Gemini) · OpenAI · Anthropic (Claude) · Ukubona LLC (Vogelstein, modulator)</div>
-  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III), the θ-as-ideological-invariant extension · this entry is append-only.</div>
+  <div class="ledger">Λᵢ — KEPT: the original prompt, the USRPO diagram, Wisdom Without, Gemini's epistemic-router-collapse diagnosis and institutional-longevity table, the Hal/Henry V and Lear pairing, the five Gemini-sourced timestamps, the unresolved fragment, the cost-allocation extension (C<sub>fp</sub> formalized inside III), the θ-as-ideological-invariant extension, the two cached YouTube convergences (Camunda's hub, Coyle's ontology gate) held apart from vocabulary-matching · this entry is append-only.</div>
 </footer>
 
 <script>
